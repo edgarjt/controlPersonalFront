@@ -1,26 +1,17 @@
 <div class="d-flex w-100 vh-100">
   <mat-card class="card-login">
-    <form class="example-form">
-      <mat-form-field class="w-100" appearance="legacy">
-        <mat-label>ECorreo electronico</mat-label>
-        <input type="email" matInput [formControl]="emailFormControl">
-        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-          Porfavor introuce en correo valido
-        </mat-error>
-        <mat-error *ngIf="emailFormControl.hasError('required')">
-          Correo es <strong>requerido</strong>
+    <form class="example-form" (ngSubmit)="login()" [formGroup]="loginForm">
+      <mat-form-field class="w-100">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="userEmail"
+               [ngClass]="{ 'is-invalid': submitted && form.userEmail.errors }" required>
+        <mat-error *ngIf="submitted && form.userEmail.errors" class="">
+          <di *ngIf="loginForm.controls.userEmail.errors.required">Email invalido</di>
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="w-100" appearance="legacy">
-        <mat-label>Contraseña</mat-label>
-        <input type="password" matInput [formControl]="emailFormControl">
-        <mat-error *ngIf="emailFormControl.hasError('required')">
-          Contraseña es <strong>requerido</strong>
-        </mat-error>
-      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="disableButtonAdd">ACCEDER</button>
 
-      <button mat-raised-button color="primary">Entrar</button>
     </form>
 
   </mat-card>
