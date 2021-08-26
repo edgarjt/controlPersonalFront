@@ -28,8 +28,20 @@ export class LoginComponent implements OnInit {
 
   get form() {return this.loginForm?.controls; }
 
-  login() {
-    console.log('ooko');
+  login(): any {
+    this.submitted = true;
+
+    if (this.loginForm.invalid) {
+      return false;
+    }
+
+    const params = {
+      email: this.form.userEmail.value,
+      password: this.form.userPassword.value
+    };
+
+    console.log(params);
+
   }
 
 }

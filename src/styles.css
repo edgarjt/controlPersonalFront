@@ -24,3 +24,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .vh-50 {
   height: 50vh;
 }
+.mb-4 {
+  margin-bottom: 20px;
+}
+.mt-4 {
+  margin-top: 20px;
+}

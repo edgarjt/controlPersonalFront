@@ -1,16 +1,26 @@
 <div class="d-flex w-100 vh-100">
   <mat-card class="card-login">
     <form class="example-form" (ngSubmit)="login()" [formGroup]="loginForm">
-      <mat-form-field class="w-100">
+      <mat-form-field class="w-100 mb-4">
         <mat-label>Email</mat-label>
         <input matInput type="email" formControlName="userEmail"
                [ngClass]="{ 'is-invalid': submitted && form.userEmail.errors }" required>
         <mat-error *ngIf="submitted && form.userEmail.errors" class="">
-          <di *ngIf="loginForm.controls.userEmail.errors.required">Email invalido</di>
+          <span *ngIf="loginForm.controls.userEmail.errors.required">Email es requerido</span>
+          <span *ngIf="loginForm.controls.userEmail.errors.email">Email invalido</span>
         </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" [disabled]="disableButtonAdd">ACCEDER</button>
+      <mat-form-field class="w-100 mb-4">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="userPassword"
+               [ngClass]="{ 'is-invalid': submitted && form.userPassword.errors }" required>
+        <mat-error *ngIf="submitted && form.userPassword.errors" class="">
+          <span *ngIf="loginForm.controls.userPassword.errors.required">Contraseña es requerido</span>
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" [disabled]="disableButtonAdd">Iniciar</button>
 
     </form>
 
