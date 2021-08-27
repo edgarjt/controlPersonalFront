@@ -1,9 +1,48 @@
 .pt-60 {
   margin-top: 60px;
 }
+.cont-area {
+  margin-top: 15px;
+}
 .sidenav {
   width: 350px;
+  height: 100vh;
 }
 .nav-spacer {
   flex: 1 1 auto;
+}
+.menu {
+  margin-top: 15px;
+  padding-left: 24px;
+  padding-right: 40px;
+}
+.menu ul {
+  display: block;
+  margin: auto;
+  padding: 0;
+  color: white;
+}
+.menu ul li{
+  list-style: none;
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 10px;
+  color: white;
+  margin-top: 5px;
+
+}
+
+.menu ul li:hover {
+  background: #dbdada;
+  cursor: pointer;
+}
+.menu ul li a {
+  text-decoration: none;
+  color: #1e1e1e;
+}
+
+.active {
+  background: #dbdada;
+  border-left: #3f51b5 solid 3px;
 }

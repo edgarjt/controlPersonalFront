@@ -13,7 +13,7 @@ export class AuthService {
   public url: string;
 
   constructor(private http: HttpClient) {
-    this.url = environment.API_URL + '/api/auth/';
+    this.url = environment.API_URL + 'api/auth/';
   }
 
   login(params: any): Observable <any> {
@@ -36,11 +36,11 @@ export class AuthService {
     sessionStorage.setItem('userData', JSON.stringify(userData));
   }
 
-  public getToken(): String | null{
+  public getToken(): any {
     return sessionStorage.getItem('token');
   }
 
-  public getUsers(): Observable<any> {
+  public getUsers():any {
     return JSON.parse(<any>sessionStorage.getItem('userData'));
   }
 

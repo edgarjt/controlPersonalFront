@@ -6,7 +6,7 @@ import { AuthService } from '../_services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ValidarTokenGuard implements CanActivate, CanLoad {
+export class LoginGuard implements CanActivate, CanLoad {
   constructor(
     private authService: AuthService,
     private router: Router
@@ -17,7 +17,7 @@ export class ValidarTokenGuard implements CanActivate, CanLoad {
       return true;
     }
 
-    this.router.navigate(['/panel/login']);
+    this.router.navigate(['/login']);
 
     return false;
   }

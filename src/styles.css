@@ -8,7 +8,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   justify-content: center;
   align-items: center;
 }
-
+.container {
+  width: 95%;
+  margin: auto;
+}
 .w-80 {
   width: 80%;
 }
