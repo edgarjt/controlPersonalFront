@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>Agregar Usuario</h2>
+
+<form class="example-form" (ngSubmit)="addUser()" [formGroup]="addUser">
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Nombre</mat-label>
+    <input matInput type="text" formControlName="userName"
+           [ngClass]="{ 'is-invalid': submitted && form.userName.errors }" required>
+    <mat-error *ngIf="submitted && form.userName.errors" class="">
+      <span *ngIf="addUser.controls.userName.errors?.required">Nombre requerido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Apellido paterno</mat-label>
+    <input matInput type="password" formControlName="userAP"
+           [ngClass]="{ 'is-invalid': submitted && form.userAP.errors }" required>
+    <mat-error *ngIf="submitted && form.userAP.errors" class="">
+      <span *ngIf="addUser.controls.userAP.errors?.required">Apellido requerido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Apellido materno</mat-label>
+    <input matInput type="password" formControlName="userAM"
+           [ngClass]="{ 'is-invalid': submitted && form.userAM.errors }" required>
+    <mat-error *ngIf="submitted && form.userAM.errors" class="">
+      <span *ngIf="addUser.controls.userAM.errors?.required">Apellido requerido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Correo electronico</mat-label>
+    <input matInput type="email" formControlName="userEmail"
+           [ngClass]="{ 'is-invalid': submitted && form.userEmail.errors }" required>
+    <mat-error *ngIf="submitted && form.userEmail.errors" class="">
+      <span *ngIf="addUser.controls.userEmail.errors?.required">Correo electronico requerido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Contraseña</mat-label>
+    <input matInput type="email" formControlName="userPassword"
+           [ngClass]="{ 'is-invalid': submitted && form.userPassword.errors }" required>
+    <mat-error *ngIf="submitted && form.userPassword.errors" class="">
+      <span *ngIf="addUser.controls.userPassword.errors?.required">Contraseña requerido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Rol</mat-label>
+    <mat-select formControlName="role_id"
+                [ngClass]="{ 'is-invalid': submitted && form.role_id.errors }" required>
+      <mat-option value="1">
+        Administrador
+      </mat-option>
+
+      <mat-option value="2">
+        Usuario
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="submitted && form.role_id.errors" >
+      <span *ngIf="addUser.controls.role_id.errors?.required">Rol requerido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" [disabled]="disableButtonAdd">guardar</button>
+
+</form>

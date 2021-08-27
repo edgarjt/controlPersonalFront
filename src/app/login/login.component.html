@@ -6,8 +6,8 @@
         <input matInput type="email" formControlName="userEmail"
                [ngClass]="{ 'is-invalid': submitted && form.userEmail.errors }" required>
         <mat-error *ngIf="submitted && form.userEmail.errors" class="">
-          <span *ngIf="loginForm.controls.userEmail.errors.required">Email es requerido</span>
-          <span *ngIf="loginForm.controls.userEmail.errors.email">Email invalido</span>
+          <span *ngIf="loginForm.controls.userEmail.errors?.required">Email es requerido</span>
+          <span *ngIf="loginForm.controls.userEmail.errors?.email">Email invalido</span>
         </mat-error>
       </mat-form-field>
 
@@ -16,7 +16,7 @@
         <input matInput type="password" formControlName="userPassword"
                [ngClass]="{ 'is-invalid': submitted && form.userPassword.errors }" required>
         <mat-error *ngIf="submitted && form.userPassword.errors" class="">
-          <span *ngIf="loginForm.controls.userPassword.errors.required">Contraseña es requerido</span>
+          <span *ngIf="loginForm.controls.userPassword.errors?.required">Contraseña es requerido</span>
         </mat-error>
       </mat-form-field>
 

@@ -15,7 +15,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .w-80 {
   width: 80%;
 }
-
+.w-30 {
+  width: 30%;
+}
 .w-100 {
   width: 100%;
 }
@@ -27,6 +29,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .vh-50 {
   height: 50vh;
 }
+.mb-2 {
+  margin-bottom: 10px;
+}
 .mb-4 {
   margin-bottom: 20px;
 }
@@ -36,4 +41,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .fixed-top {
   position: fixed;
   z-index: 2;
+}
+.demo-button-container{
+  padding-top: 15px;
+  float: right;
 }

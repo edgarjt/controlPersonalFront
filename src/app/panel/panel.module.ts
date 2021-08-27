@@ -4,17 +4,21 @@ import { RolesComponent } from './roles/roles.component';
 import { UsersComponent } from './users/users.component';
 import { MaterialModule } from "../material.module";
 import { AuthService } from "../_services/auth.service";
-import {UsersService} from "../_services/user.service";
+import { UsersService } from "../_services/user.service";
+import { AddUserComponent } from './users/add-user/add-user.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     RolesComponent,
-    UsersComponent
+    UsersComponent,
+    AddUserComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,
