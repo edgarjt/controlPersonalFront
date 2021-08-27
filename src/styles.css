@@ -30,3 +30,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mt-4 {
   margin-top: 20px;
 }
+.fixed-top {
+  position: fixed;
+  z-index: 2;
+}
