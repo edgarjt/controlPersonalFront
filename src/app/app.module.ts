@@ -11,6 +11,7 @@ import { PanelComponent } from './panel/panel.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { PanelModule } from "./panel/panel.module";
 import { InterceptorService } from "./_interceptors/interceptor.service";
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,12 @@ import { InterceptorService } from "./_interceptors/interceptor.service";
     MaterialModule,
     ReactiveFormsModule,
     SharedModule,
-    PanelModule
+    PanelModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    })
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent]
