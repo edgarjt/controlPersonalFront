@@ -71,7 +71,7 @@ export class AddUserComponent implements OnInit {
     }, error => {
       this.load = false;
       this.disableButtonAdd = false;
-      this.toastr.error('Usuario no registrado','Erro');
+      this.toastr.error('Usuario no registrado','Error');
     });
   }
 

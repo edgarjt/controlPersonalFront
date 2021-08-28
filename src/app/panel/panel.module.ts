@@ -7,6 +7,7 @@ import { AuthService } from "../_services/auth.service";
 import { UsersService } from "../_services/user.service";
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { RoleService } from "../_services/role.service";
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ReactiveFormsModule } from "@angular/forms";
   ],
   providers: [
     AuthService,
-    UsersService
+    UsersService,
+    RoleService
   ]
 })
 export class PanelModule {
