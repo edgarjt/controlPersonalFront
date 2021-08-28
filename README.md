@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Move file theme rute
 
-> node_modules/@angular/material/core/theming/_palette.scss
+> node_modules/@angular/material/core/theming/
