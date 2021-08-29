@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'panel', component: PanelComponent, canActivate: [LoginGuard], children:
       [
-        { path: '', component: RolesComponent },
-        { path: 'roles', component: RolesComponent },
+        { path: '', component: UsersComponent },
+        /*{ path: 'roles', component: RolesComponent },*/
         { path: 'users', component: UsersComponent },
       ]
   }

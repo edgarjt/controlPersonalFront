@@ -9,10 +9,13 @@ import { RoleService } from "../../_services/role.service";
   styleUrls: ['./roles.component.css']
 })
 export class RolesComponent implements OnInit {
+  load: boolean;
 
   constructor(
     public rolesServices: RoleService
-  ) { }
+  ) {
+    this.load = true;
+  }
 
   displayedColumns: string[] = ['name', 'code', 'description', 'edit', 'delete'];
   dataSource = new MatTableDataSource();
@@ -26,8 +29,11 @@ export class RolesComponent implements OnInit {
 
   ngOnInit(): void {
     this.rolesServices.getRoles().subscribe(response => {
-      this.dataSource = new MatTableDataSource(response);
-      this.dataSource.paginator = this.paginator || null;
+      if (response.length > 0) {
+        this.load = false;
+        this.dataSource = new MatTableDataSource(response);
+        this.dataSource.paginator = this.paginator || null;
+      }
     }, error => {
       console.log(error);
     })
