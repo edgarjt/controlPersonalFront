@@ -8,13 +8,15 @@ import { UsersService } from "../_services/user.service";
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { RoleService } from "../_services/role.service";
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 
 @NgModule({
   declarations: [
     RolesComponent,
     UsersComponent,
-    AddUserComponent
+    AddUserComponent,
+    EditUserComponent
   ],
   imports: [
     CommonModule,

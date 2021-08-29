@@ -65,7 +65,7 @@ export class AddUserComponent implements OnInit {
     this.userService.addUsers(params).subscribe(response => {
       this.load = false;
       this.disableButtonAdd = false;
-      this.toastr.success('Usuario registrado','Exito');
+      this.toastr.success('Usuario registrado','Éxito');
       this.dialogRef.close(response);
 
     }, error => {

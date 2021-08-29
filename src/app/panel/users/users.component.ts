@@ -5,6 +5,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { AddUserComponent } from "./add-user/add-user.component";
 import { isObject } from "rxjs/internal-compatibility";
+import { EditUserComponent } from "./edit-user/edit-user.component";
 
 @Component({
   selector: 'app-users',
@@ -13,14 +14,15 @@ import { isObject } from "rxjs/internal-compatibility";
 })
 export class UsersComponent implements OnInit {
   message: any;
-  dataToken: any;
-  dataUser: any;
+  load: boolean
 
 
   constructor(
     public usersServices: UsersService,
     public dialog: MatDialog,
-  ) { }
+  ) {
+    this.load = true;
+  }
 
   displayedColumns: string[] = ['name', 'surname', 'email', 'role_id', 'edit', 'delete'];
   dataSource = new MatTableDataSource();
@@ -34,9 +36,11 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.usersServices.getUsers().subscribe(response => {
-      this.dataSource = new MatTableDataSource(response);
-      this.dataSource.paginator = this.paginator || null;
-      //this.dataSource.filter = filterValue.trim().toLowerCase();
+      if (response.length > 0) {
+        this.load = false;
+        this.dataSource = new MatTableDataSource(response);
+        this.dataSource.paginator = this.paginator || null;
+      }
     },  error => {
       console.log(error);
     });
@@ -63,6 +67,31 @@ export class UsersComponent implements OnInit {
   tableAddItem(group: any) {
     const data = this.dataSource.data;
     data.push(group);
+    this.dataSource.data = data;
+  }
+
+  editUser(data: any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = data;
+    dialogConfig.width = '600px';
+    dialogConfig.height = '600px';
+    const dialogRef = this.dialog.open(EditUserComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(updateUser => {
+      if (isObject(updateUser)) {
+        this.updateRow(updateUser.data)
+      }
+    });
+  }
+
+  updateRow(dataUpdate: any) {
+    const data = this.dataSource.data;
+    // @ts-ignore
+    const foundIndex = data.findIndex(x => x.id === dataUpdate.id);
+
+    data[foundIndex] = dataUpdate;
     this.dataSource.data = data;
   }
 

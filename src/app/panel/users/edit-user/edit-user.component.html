@@ -1,12 +1,12 @@
-<h2 mat-dialog-title>Agregar Usuario</h2>
+<h2 mat-dialog-title>Actualizar Usuario</h2>
 
-<form class="example-form" (ngSubmit)="addUserForm()" [formGroup]="addUser">
+<form class="example-form" (ngSubmit)="updateUser()" [formGroup]="updateUserForm">
   <mat-form-field class="w-100 mb-3">
     <mat-label>Nombre</mat-label>
     <input matInput type="text" formControlName="name"
-           [ngClass]="{ 'is-invalid': submitted && form.name.errors }" required>
+           [ngClass]="{ 'is-invalid': submitted && form.name.errors }">
     <mat-error *ngIf="submitted && form.name.errors" class="">
-      <span *ngIf="addUser.controls.name.errors?.required">Nombre requerido</span>
+      <span >Nombre requerido</span>
     </mat-error>
   </mat-form-field>
 
@@ -15,7 +15,7 @@
     <input matInput type="text" formControlName="first_surname"
            [ngClass]="{ 'is-invalid': submitted && form.first_surname.errors }" required>
     <mat-error *ngIf="submitted && form.first_surname.errors" class="">
-      <span *ngIf="addUser.controls.first_surname.errors?.required">Apellido requerido</span>
+      <span *ngIf="updateUserForm.controls.first_surname.errors?.required">Apellido requerido</span>
     </mat-error>
   </mat-form-field>
 
@@ -24,7 +24,7 @@
     <input matInput type="text" formControlName="last_surname"
            [ngClass]="{ 'is-invalid': submitted && form.last_surname.errors }" required>
     <mat-error *ngIf="submitted && form.last_surname.errors" class="">
-      <span *ngIf="addUser.controls.last_surname.errors?.required">Apellido requerido</span>
+      <span *ngIf="updateUserForm.controls.last_surname.errors?.required">Apellido requerido</span>
     </mat-error>
   </mat-form-field>
 
@@ -33,17 +33,8 @@
     <input matInput type="email" formControlName="email"
            [ngClass]="{ 'is-invalid': submitted && form.email.errors }" required>
     <mat-error *ngIf="submitted && form.email.errors" class="">
-      <span *ngIf="addUser.controls.email.errors?.required">Correo electronico requerido</span>
-      <span *ngIf="addUser.controls.email.errors?.email">Correo invalido</span>
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field class="w-100 mb-3">
-    <mat-label>Contraseña</mat-label>
-    <input matInput type="password" formControlName="password"
-           [ngClass]="{ 'is-invalid': submitted && form.password.errors }" required>
-    <mat-error *ngIf="submitted && form.password.errors" class="">
-      <span *ngIf="addUser.controls.password.errors?.required">Contraseña requerido</span>
+      <span *ngIf="updateUserForm.controls.email.errors?.required">Correo electronico requerido</span>
+      <span *ngIf="updateUserForm.controls.email.errors?.email">Correo invalido</span>
     </mat-error>
   </mat-form-field>
 
@@ -60,7 +51,7 @@
       </mat-option>
     </mat-select>
     <mat-error *ngIf="submitted && form.role_id.errors">
-      <span *ngIf="addUser.controls.role_id.errors?.required">Rol requerido</span>
+      <span *ngIf="updateUserForm.controls.role_id.errors?.required">Rol requerido</span>
     </mat-error>
   </mat-form-field>
 
