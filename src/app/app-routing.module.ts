@@ -5,6 +5,8 @@ import { PanelComponent } from './panel/panel.component';
 import { RolesComponent } from "./panel/roles/roles.component";
 import { UsersComponent } from "./panel/users/users.component";
 import { LoginGuard } from "./_guards/login.guard";
+import { MyDateComponent } from "./panel/my-date/my-date.component";
+import { WorkComponent } from "./panel/work/work.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -13,7 +15,9 @@ const routes: Routes = [
       [
         { path: '', component: UsersComponent },
         /*{ path: 'roles', component: RolesComponent },*/
+        { path: 'myDate', component: MyDateComponent },
         { path: 'users', component: UsersComponent },
+        { path: 'works', component: WorkComponent },
       ]
   }
 ];

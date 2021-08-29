@@ -9,6 +9,8 @@ import { AddUserComponent } from './users/add-user/add-user.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { RoleService } from "../_services/role.service";
 import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { MyDateComponent } from './my-date/my-date.component';
+import { WorkComponent } from './work/work.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
     RolesComponent,
     UsersComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    MyDateComponent,
+    WorkComponent
   ],
   imports: [
     CommonModule,

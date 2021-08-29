@@ -4,7 +4,14 @@
   </button>
   <span>tabasco.gob.mx</span>
   <span class="nav-spacer"></span>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+
+  <button mat-button [matMenuTriggerFor]="menu">{{dataUser.getUsers().name}}</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>{{dataUser.getUsers().role.name}}</button>
+  </mat-menu>
+
+
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="logout()">
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
@@ -16,6 +23,16 @@
 <!--        <li [routerLink]="['roles']" [routerLinkActive]="['active']">
           <a>Roles</a>
         </li>-->
+
+        <li [routerLink]="['myDate']" [routerLinkActive]="['active']">
+          <mat-icon class="icon-menu">account_circle</mat-icon>
+          <a>Mis datos</a>
+        </li>
+
+        <li [routerLink]="['works']" [routerLinkActive]="['active']">
+          <mat-icon class="icon-menu">work</mat-icon>
+          <a>Cargos</a>
+        </li>
 
         <li [routerLink]="['users']" [routerLinkActive]="['active']">
           <mat-icon class="icon-menu">people</mat-icon>
