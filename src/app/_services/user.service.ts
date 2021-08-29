@@ -28,4 +28,8 @@ export class UsersService {
     return this.http.put(this.url + 'users/updateUser', params, httpOptions);
   }
 
+  deleteUser(params: any): Observable<any> {
+    return this.http.delete(this.url + 'users/deleteUser?id=' + params.id, httpOptions);
+  }
+
 }

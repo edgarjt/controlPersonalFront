@@ -18,6 +18,7 @@
         </li>-->
 
         <li [routerLink]="['users']" [routerLinkActive]="['active']">
+          <mat-icon class="icon-menu">people</mat-icon>
           <a>Usuarios</a>
         </li>
       </ul>
@@ -26,7 +27,9 @@
 
   <mat-drawer-content class="pt-60 vh-100">
     <div class="cont-area container">
+      <mat-card>
       <router-outlet></router-outlet>
+      </mat-card>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
