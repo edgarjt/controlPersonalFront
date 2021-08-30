@@ -36,8 +36,10 @@ export class LoginComponent implements OnInit {
 
   login(): any {
     this.submitted = true;
+    this.disableButtonAdd = true;
 
     if (this.loginForm.invalid) {
+      this.disableButtonAdd = false;
       return false;
     }
 
@@ -58,15 +60,18 @@ export class LoginComponent implements OnInit {
       this.disableButtonAdd = false;
 
       if (error.error.code === 500) {
+        this.disableButtonAdd = false;
         this.message = error.error.message;
       }
 
       if (error.error.code === 401) {
+        this.disableButtonAdd = false;
         this.message = error.error.message;
         console.log('Usuario incorrectos')
       }
 
       if (error.error.code === 422) {
+        this.disableButtonAdd = false;
         this.message = 'Datos inválidos';
       }
     });

@@ -1,6 +1,9 @@
 <div class="d-flex w-100 vh-100">
   <mat-card class="card-login">
-    <img src="assets/img/escudo_de_armas.png" alt="Logo" style="text-align: center">
+    <div class="w-100 login-logo">
+      <img src="assets/img/escudo_de_armas.png" alt="Logo">
+    </div>
+
     <form class="example-form" (ngSubmit)="login()" [formGroup]="loginForm">
       <mat-form-field class="w-100 mb-4">
         <mat-label>Email</mat-label>
