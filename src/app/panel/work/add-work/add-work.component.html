@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>Agregar Cargo</h2>
+
+<form class="example-form" (ngSubmit)="addWork()" [formGroup]="addWorkForm">
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Area</mat-label>
+    <input matInput type="text" formControlName="area"
+           [ngClass]="{ 'is-invalid': submitted && form.area.errors }" required>
+    <mat-error *ngIf="submitted && form.area.errors" class="">
+      <span *ngIf="addWorkForm.controls.area.errors?.required">Area requerido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Nombre</mat-label>
+    <input matInput type="text" formControlName="name"
+           [ngClass]="{ 'is-invalid': submitted && form.name.errors }" required>
+    <mat-error *ngIf="submitted && form.name.errors" class="">
+      <span *ngIf="addWorkForm.controls.name.errors?.required">Nombre requerido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Código</mat-label>
+    <input matInput type="text" formControlName="code"
+           [ngClass]="{ 'is-invalid': submitted && form.code.errors }" required>
+    <mat-error *ngIf="submitted && form.code.errors" class="">
+      <span *ngIf="addWorkForm.controls.code.errors?.required">Código requerido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Estatus</mat-label>
+    <mat-select formControlName="status"
+                [ngClass]="{ 'is-invalid': submitted && form.status.errors }" required>
+      <mat-option value="activo">
+        Activado
+      </mat-option>
+
+      <mat-option value="desactivo">
+        Desactivado
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="submitted && form.status.errors">
+      <span *ngIf="addWorkForm.controls.status.errors?.required">Estatus requerido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Descripción</mat-label>
+    <textarea matInput placeholder="Descripcion..." formControlName="description">
+    </textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" [disabled]="disableButtonAdd">guardar</button>
+  <button class="save-btn" mat-flat-button color="warn" mat-dialog-close>Cerrar</button>
+
+</form>

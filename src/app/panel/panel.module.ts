@@ -12,6 +12,9 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { MyDateComponent } from './my-date/my-date.component';
 import { WorkComponent } from './work/work.component';
 import { SettingComponent } from './setting/setting.component';
+import { WorkService } from "../_services/work.service";
+import { AddWorkComponent } from './work/add-work/add-work.component';
+import { EditWorkComponent } from './work/edit-work/edit-work.component';
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import { SettingComponent } from './setting/setting.component';
     EditUserComponent,
     MyDateComponent,
     WorkComponent,
-    SettingComponent
+    SettingComponent,
+    AddWorkComponent,
+    EditWorkComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +37,8 @@ import { SettingComponent } from './setting/setting.component';
   providers: [
     AuthService,
     UsersService,
-    RoleService
+    RoleService,
+    WorkService
   ]
 })
 export class PanelModule {

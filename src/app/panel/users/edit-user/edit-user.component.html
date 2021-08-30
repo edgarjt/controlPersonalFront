@@ -39,6 +39,15 @@
   </mat-form-field>
 
   <mat-form-field class="w-100 mb-3">
+    <mat-label>RFC</mat-label>
+    <input matInput type="text" formControlName="rfc"
+           [ngClass]="{ 'is-invalid': submitted && form.rfc.errors }" required>
+    <mat-error *ngIf="submitted && form.rfc.errors" class="">
+      <span *ngIf="updateUserForm.controls.rfc.errors?.required">RFC requerido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3">
     <mat-label>Rol</mat-label>
     <mat-select formControlName="role_id"
                 [ngClass]="{ 'is-invalid': submitted && form.role_id.errors }" required>
@@ -52,6 +61,19 @@
     </mat-select>
     <mat-error *ngIf="submitted && form.role_id.errors">
       <span *ngIf="updateUserForm.controls.role_id.errors?.required">Rol requerido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Cargo</mat-label>
+    <mat-select formControlName="work_id"
+                [ngClass]="{ 'is-invalid': submitted && form.work_id.errors }" required>
+      <mat-option *ngFor="let cargo of cargos" [value]="cargo?.id">
+        {{cargo?.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="submitted && form.work_id.errors">
+      <span *ngIf="updateUserForm.controls.work_id.errors?.required">Rol requerido</span>
     </mat-error>
   </mat-form-field>
 

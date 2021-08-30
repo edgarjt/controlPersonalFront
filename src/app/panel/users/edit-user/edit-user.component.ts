@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { UsersService } from "../../../_services/user.service";
 import { ToastrService } from "ngx-toastr";
+import {WorkService} from "../../../_services/work.service";
 
 @Component({
   selector: 'app-edit-user',
@@ -14,6 +15,7 @@ export class EditUserComponent implements OnInit {
   submitted: boolean = false;
   disableButtonAdd: boolean;
   load: boolean;
+  cargos: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public dataUser: any,
@@ -21,6 +23,7 @@ export class EditUserComponent implements OnInit {
     public usersService: UsersService,
     private toastr: ToastrService,
     public dialogRef: MatDialogRef<EditUserComponent>,
+    public cargoService: WorkService
   ) {
     this.updateUserForm = FormGroup;
     this.disableButtonAdd = false;
@@ -28,13 +31,19 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cargoService.getWork().subscribe(response => {
+      this.cargos = response;
+    })
+
     this.updateUserForm = this.formBuilder.group({
       id: this.dataUser.id,
       name: new FormControl(this.dataUser.name, [Validators.required]),
       first_surname: new FormControl(this.dataUser.first_surname, [Validators.required]),
       last_surname: new FormControl(this.dataUser.last_surname, [Validators.required]),
       email: new FormControl(this.dataUser.email, [Validators.required, Validators.email]),
+      rfc: new FormControl(this.dataUser.rfc, [Validators.required]),
       role_id: new FormControl(this.dataUser.role_id.toString(), [Validators.required]),
+      work_id: new FormControl(this.dataUser.work_id, [Validators.required]),
     });
   }
 
