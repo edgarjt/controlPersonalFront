@@ -11,6 +11,7 @@ import { RoleService } from "../_services/role.service";
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { MyDateComponent } from './my-date/my-date.component';
 import { WorkComponent } from './work/work.component';
+import { SettingComponent } from './setting/setting.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { WorkComponent } from './work/work.component';
     AddUserComponent,
     EditUserComponent,
     MyDateComponent,
-    WorkComponent
+    WorkComponent,
+    SettingComponent
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,44 @@
 <h2 class="mat-cell">Mis datos</h2>
 
 <mat-divider></mat-divider>
+
+<h2>Información personal</h2>
+<table class="mb-4">
+  <tbody>
+  <tr>
+    <td class="td-head">Nombre</td>
+    <td class="td-body font-weight">{{dataUser?.name}}</td>
+  </tr>
+
+  <tr>
+    <td class="td-head">Apellido paterno</td>
+    <td class="td-body font-weight">{{dataUser?.first_surname}}</td>
+  </tr>
+
+  <tr>
+    <td class="td-head">Apellido materno</td>
+    <td class="td-body font-weight">{{dataUser?.last_surname}}</td>
+  </tr>
+
+  <tr>
+    <td class="td-head">Correo electrónico</td>
+    <td class="td-body font-weight">{{dataUser?.email}}</td>
+  </tr>
+
+  <tr>
+    <td class="td-head">Permiso</td>
+    <td class="td-body font-weight">{{dataUser?.role.name}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<mat-divider></mat-divider>
+<h2>Información laboral</h2>
+<table>
+  <tbody>
+  <tr>
+    <td class="td-head">Cargo</td>
+    <td class="td-body font-weight">Sistemas</td>
+  </tr>
+  </tbody>
+</table>

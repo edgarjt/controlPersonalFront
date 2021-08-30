@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
   }
 
   private redirectUserToPanel() {
-    this.router.navigate(['/panel/users']);
+    this.router.navigate(['/panel/myDate']);
   }
 
 

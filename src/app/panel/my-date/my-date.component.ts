@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from "../../_services/auth.service";
 
 @Component({
   selector: 'app-my-date',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-date.component.css']
 })
 export class MyDateComponent implements OnInit {
+  dataUser: any;
 
-  constructor() { }
+  constructor(
+    public userService: AuthService
+  ) {
+    this.dataUser = this.userService.getUsers();
+  }
 
   ngOnInit(): void {
   }
