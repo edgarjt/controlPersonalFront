@@ -38,12 +38,13 @@ export class WorkComponent implements OnInit {
 
   ngOnInit(): void {
     this.workService.getWork().subscribe(response => {
+      this.load = false;
       if (response.length > 0) {
-        this.load = false;
         this.dataSource = new MatTableDataSource(response);
         this.dataSource.paginator = this.paginator || null;
       }
     }, error => {
+      this.load = false;
       console.log(error);
     })
   }
