@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { AuthService } from "./auth.service";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'} ),
@@ -12,7 +13,10 @@ const httpOptions = {
 export class UsersService {
   public url: string;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+  ) {
     this.url = environment.API_URL + 'api/';
   }
 
@@ -30,6 +34,25 @@ export class UsersService {
 
   deleteUser(params: any): Observable<any> {
     return this.http.delete(this.url + 'users/deleteUser?id=' + params.id, httpOptions);
+  }
+
+  isAdmin(): boolean {
+    let data = this.authService.getUsers();
+
+    if(data === undefined || data === null)
+      return false
+
+    return data.role.code === 'admin';
+
+  }
+
+  isUser(): boolean {
+    let data = this.authService.getUsers();
+
+    if (data === undefined || data === null)
+      return false;
+
+    return data.role.code === 'user';
   }
 
 }

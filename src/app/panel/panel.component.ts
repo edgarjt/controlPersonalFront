@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../_services/auth.service";
 import Swal from "sweetalert2";
 import { Router } from "@angular/router";
+import { UsersService } from "../_services/user.service";
 
 @Component({
   selector: 'app-panel',
@@ -14,6 +15,7 @@ export class PanelComponent implements OnInit {
   constructor(
     public dataUser: AuthService,
     private router: Router,
+    public userService: UsersService
   ) { }
 
   ngOnInit(): void {}

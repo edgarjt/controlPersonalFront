@@ -29,17 +29,17 @@
           <a>Mis datos</a>
         </li>
 
-        <li [routerLink]="['setting']" [routerLinkActive]="['active']">
+        <li [routerLink]="['setting']" [routerLinkActive]="['active']" *ngIf="userService.isAdmin()">
           <mat-icon class="icon-menu">settings</mat-icon>
           <a>Configuración</a>
         </li>
 
-        <li [routerLink]="['works']" [routerLinkActive]="['active']">
+        <li [routerLink]="['works']" [routerLinkActive]="['active']" *ngIf="userService.isAdmin()">
           <mat-icon class="icon-menu">work</mat-icon>
           <a>Cargos</a>
         </li>
 
-        <li [routerLink]="['users']" [routerLinkActive]="['active']">
+        <li [routerLink]="['users']" [routerLinkActive]="['active']" *ngIf="userService.isAdmin()">
           <mat-icon class="icon-menu">people</mat-icon>
           <a>Usuarios</a>
         </li>
