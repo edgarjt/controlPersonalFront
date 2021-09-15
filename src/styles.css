@@ -22,6 +22,9 @@ body { margin: 0 }
 .w-30 {
   width: 30%;
 }
+.w-45 {
+  width: 48%;
+}
 .w-100 {
   width: 100%;
 }
@@ -44,6 +47,9 @@ body { margin: 0 }
 }
 .mt-4 {
   margin-top: 20px;
+}
+.mt-3 {
+  margin-top: 8px;
 }
 .fixed-top {
   position: fixed;

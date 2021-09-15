@@ -1,0 +1,116 @@
+<mat-toolbar color="primary" class="fixed-top">
+  <span class="example-spacer"></span>
+  <a [routerLink]="['/login']" class="register">Iniciar sesión</a>
+</mat-toolbar>
+
+<div class="d-flex w-100 vh-100">
+  <mat-card class="card-login">
+    <h2>Datos personales</h2>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field class="w-45 mb-3">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+
+      <mat-form-field class="w-45 mb-3">
+        <mat-label>Apellidos</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field class="w-45 mb-3">
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="w-45 mb-3">
+        <mat-label>CURP</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>Dirección</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>Entre calles</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>Ciudad</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field class="w-45 mb-4">
+      <mat-label>Codigo postal</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+    </div>
+
+    <mat-radio-group aria-label="Select an option" color="primary" class="mb-4">
+      <label id="example-radio-group-label">Sexo: </label>
+      <mat-radio-button value="1">H</mat-radio-button>
+      <mat-radio-button value="2">M</mat-radio-button>
+    </mat-radio-group>
+
+
+    <h2 style="margin-top: 20px">Datos laborales</h2>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>Fecha de inicio</mat-label>
+      <input matInput [matDatepicker]="inicio">
+      <mat-datepicker-toggle matSuffix [for]="inicio"></mat-datepicker-toggle>
+      <mat-datepicker #inicio></mat-datepicker>
+    </mat-form-field>
+
+
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>Dependencia</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>Departamento</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>Cargo</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+    </div>
+
+    <mat-form-field class="w-100 mb-3">
+      <mat-label>Jefe directo</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+
+
+    <mat-form-field class="w-100 mb-3">
+      <mat-label>Correo electronico</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field class="w-100 mb-3">
+      <mat-label>Teléfono</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">Registrarme</button>
+
+  </mat-card>
+</div>
