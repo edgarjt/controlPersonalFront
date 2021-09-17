@@ -6,109 +6,187 @@
 <div class="d-flex w-100 vh-100">
   <mat-card class="card-login">
     <h2>Datos personales</h2>
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-      <mat-form-field class="w-45 mb-3">
-        <mat-label>Nombre</mat-label>
-        <input matInput type="text">
+    <form (ngSubmit)="register()" [formGroup]="registerForm">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field class="w-45 mb-3">
+          <mat-label>Nombre</mat-label>
+          <input matInput type="text" formControlName="name"
+          [ngClass]="{'is-invalid': submitted && form.name.errors}">
+
+          <mat-error *ngIf="submitted && form.name.errors" class="">
+            <span *ngIf="registerForm.controls.name.errors?.required">Nombre inválido</span>
+          </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="w-45 mb-3">
+          <mat-label>Apellidos</mat-label>
+          <input matInput type="text" formControlName="surname"
+                 [ngClass]="{'is-invalid': submitted && form.surname.errors}">
+
+          <mat-error *ngIf="submitted && form.surname.errors" class="">
+            <span *ngIf="registerForm.controls.surname.errors?.required">Apellidos inválido</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field class="w-45 mb-3">
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="sexo"
+                 [ngClass]="{'is-invalid': submitted && form.surname.errors}">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+
+          <mat-error *ngIf="submitted && form.sexo.errors" class="">
+            <span *ngIf="registerForm.controls.sexo.errors?.required">Sexo inválido</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-45 mb-3">
+          <mat-label>CURP</mat-label>
+          <input matInput type="text" formControlName="curp"
+                 [ngClass]="{'is-invalid': submitted && form.curp.errors}">
+
+          <mat-error *ngIf="submitted && form.curp.errors" class="">
+            <span *ngIf="registerForm.controls.curp.errors?.required">CURP inválido</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field class="w-45 mb-3">
+          <mat-label>Dirección</mat-label>
+          <input matInput type="text" formControlName="street"
+                 [ngClass]="{'is-invalid': submitted && form.street.errors}">
+
+          <mat-error *ngIf="submitted && form.street.errors" class="">
+            <span *ngIf="registerForm.controls.street.errors?.required">Calle inválido</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-45 mb-3">
+          <mat-label>Entre calles</mat-label>
+          <input matInput type="text" formControlName="betweenStreet"
+                 [ngClass]="{'is-invalid': submitted && form.betweenStreet.errors}">
+
+          <mat-error *ngIf="submitted && form.betweenStreet.errors" class="">
+            <span *ngIf="registerForm.controls.betweenStreet.errors?.required">Calles inválido</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field class="w-45 mb-3">
+          <mat-label>Ciudad</mat-label>
+          <input matInput type="text" formControlName="city"
+                 [ngClass]="{'is-invalid': submitted && form.city.errors}">
+
+          <mat-error *ngIf="submitted && form.city.errors" class="">
+            <span *ngIf="registerForm.controls.city.errors?.required">Ciudad inválido</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-45 mb-4">
+          <mat-label>Codigo postal</mat-label>
+          <input matInput type="text" formControlName="cp"
+                 [ngClass]="{'is-invalid': submitted && form.cp.errors}">
+
+          <mat-error *ngIf="submitted && form.cp.errors" class="">
+            <span *ngIf="registerForm.controls.cp.errors?.required">Código postal inválido</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-radio-group aria-label="Select an option" color="primary" class="mb-4">
+        <label id="example-radio-group-label">Sexo: </label>
+        <mat-radio-button value="H">H</mat-radio-button>
+        <mat-radio-button value="M">M</mat-radio-button>
+      </mat-radio-group>
+
+
+      <h2 style="margin-top: 20px">Datos laborales</h2>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+
+        <mat-form-field class="w-45 mb-3">
+          <mat-label>Fecha de inicio</mat-label>
+          <input matInput [matDatepicker]="inicio" formControlName="date"
+                 [ngClass]="{'is-invalid': submitted && form.date.errors}">
+          <mat-datepicker-toggle matSuffix [for]="inicio"></mat-datepicker-toggle>
+          <mat-datepicker #inicio></mat-datepicker>
+
+          <mat-error *ngIf="submitted && form.date.errors" class="">
+            <span *ngIf="registerForm.controls.date.errors?.required">Fecha inválido</span>
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="w-45 mb-3">
+          <mat-label>Dependencia</mat-label>
+          <input matInput type="text" formControlName="dep"
+                 [ngClass]="{'is-invalid': submitted && form.dep.errors}">
+
+          <mat-error *ngIf="submitted && form.dep.errors" class="">
+            <span *ngIf="registerForm.controls.dep.errors?.required">Dependencia inválido</span>
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field class="w-45 mb-3">
+          <mat-label>Departamento</mat-label>
+          <input matInput type="text" formControlName="depa"
+                 [ngClass]="{'is-invalid': submitted && form.depa.errors}">
+
+          <mat-error *ngIf="submitted && form.depa.errors" class="">
+            <span *ngIf="registerForm.controls.depa.errors?.required">Departamento inválido</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-45 mb-3">
+          <mat-label>Cargo</mat-label>
+          <input matInput type="text" formControlName="cargo"
+                 [ngClass]="{'is-invalid': submitted && form.cargo.errors}">
+
+          <mat-error *ngIf="submitted && form.cargo.errors" class="">
+            <span *ngIf="registerForm.controls.cargo.errors?.required">Cargo inválido</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field class="w-100 mb-3">
+        <mat-label>Jefe directo</mat-label>
+        <input matInput type="text" formControlName="boss"
+               [ngClass]="{'is-invalid': submitted && form.boss.errors}">
+
+        <mat-error *ngIf="submitted && form.boss.errors" class="">
+          <span *ngIf="registerForm.controls.boss.errors?.required">Jefe directo inválido</span>
+        </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="w-45 mb-3">
-        <mat-label>Apellidos</mat-label>
-        <input matInput type="text">
-      </mat-form-field>
-    </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-      <mat-form-field class="w-45 mb-3">
-        <mat-label>Fecha de nacimiento</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+      <mat-form-field class="w-100 mb-3">
+        <mat-label>Correo electronico</mat-label>
+        <input matInput type="text" formControlName="email"
+               [ngClass]="{'is-invalid': submitted && form.email.errors}">
+
+        <mat-error *ngIf="submitted && form.email.errors" class="">
+          <span *ngIf="registerForm.controls.email.errors?.required">Correo electronico inválido</span>
+        </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="w-45 mb-3">
-        <mat-label>CURP</mat-label>
-        <input matInput type="text">
+      <mat-form-field class="w-100 mb-3">
+        <mat-label>Teléfono</mat-label>
+        <input matInput type="text" formControlName="phone"
+               [ngClass]="{'is-invalid': submitted && form.phone.errors}">
+
+        <mat-error *ngIf="submitted && form.phone.errors" class="">
+          <span *ngIf="registerForm.controls.phone.errors?.required">Teléfono inválido</span>
+        </mat-error>
       </mat-form-field>
-    </div>
-
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-    <mat-form-field class="w-45 mb-3">
-      <mat-label>Dirección</mat-label>
-      <input matInput type="text">
-    </mat-form-field>
-
-    <mat-form-field class="w-45 mb-3">
-      <mat-label>Entre calles</mat-label>
-      <input matInput type="text">
-    </mat-form-field>
-    </div>
-
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-    <mat-form-field class="w-45 mb-3">
-      <mat-label>Ciudad</mat-label>
-      <input matInput type="text">
-    </mat-form-field>
-
-    <mat-form-field class="w-45 mb-4">
-      <mat-label>Codigo postal</mat-label>
-      <input matInput type="text">
-    </mat-form-field>
-    </div>
-
-    <mat-radio-group aria-label="Select an option" color="primary" class="mb-4">
-      <label id="example-radio-group-label">Sexo: </label>
-      <mat-radio-button value="1">H</mat-radio-button>
-      <mat-radio-button value="2">M</mat-radio-button>
-    </mat-radio-group>
-
-
-    <h2 style="margin-top: 20px">Datos laborales</h2>
-
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-
-    <mat-form-field class="w-45 mb-3">
-      <mat-label>Fecha de inicio</mat-label>
-      <input matInput [matDatepicker]="inicio">
-      <mat-datepicker-toggle matSuffix [for]="inicio"></mat-datepicker-toggle>
-      <mat-datepicker #inicio></mat-datepicker>
-    </mat-form-field>
-
-
-    <mat-form-field class="w-45 mb-3">
-      <mat-label>Dependencia</mat-label>
-      <input matInput type="text">
-    </mat-form-field>
-
-    </div>
-
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-    <mat-form-field class="w-45 mb-3">
-      <mat-label>Departamento</mat-label>
-      <input matInput type="text">
-    </mat-form-field>
-
-    <mat-form-field class="w-45 mb-3">
-      <mat-label>Cargo</mat-label>
-      <input matInput type="text">
-    </mat-form-field>
-    </div>
-
-    <mat-form-field class="w-100 mb-3">
-      <mat-label>Jefe directo</mat-label>
-      <input matInput type="text">
-    </mat-form-field>
-
-
-    <mat-form-field class="w-100 mb-3">
-      <mat-label>Correo electronico</mat-label>
-      <input matInput type="text">
-    </mat-form-field>
-
-    <mat-form-field class="w-100 mb-3">
-      <mat-label>Teléfono</mat-label>
-      <input matInput type="text">
-    </mat-form-field>
+    </form>
 
     <button mat-raised-button color="primary">Registrarme</button>
 
