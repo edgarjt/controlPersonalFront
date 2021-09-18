@@ -28,6 +28,10 @@ export class UsersService {
     return this.http.post(this.url + 'users/addUser', params, httpOptions);
   }
 
+  addUsersGeneral(params: any): Observable<any> {
+    return this.http.post(this.url + 'addUserGeneral', params, httpOptions);
+  }
+
   updateUsers(params: any): Observable<any> {
     return this.http.put(this.url + 'users/updateUser', params, httpOptions);
   }

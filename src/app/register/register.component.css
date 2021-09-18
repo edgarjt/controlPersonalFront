@@ -1,6 +1,11 @@
+.cont-register {
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
 .card-login {
-  width: 40%;
-  min-height: 80%;
+  width: 45%;
+  height: auto;
+  margin: auto;
 }
 @media(max-width: 900px) {
   .card-login {
