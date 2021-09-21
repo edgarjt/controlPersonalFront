@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from "../_services/auth.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -13,16 +14,15 @@ export class LoginComponent implements OnInit {
   loginForm:any;
   submitted = false;
   disableButtonAdd: boolean;
-  message: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
+    private toastr: ToastrService
   ) {
     this.disableButtonAdd = false;
     this.loginForm = FormGroup;
-    this.message = '';
   }
 
   ngOnInit(): void {
@@ -61,18 +61,17 @@ export class LoginComponent implements OnInit {
 
       if (error.error.code === 500) {
         this.disableButtonAdd = false;
-        this.message = error.error.message;
+        this.toastr.error(error.error.message, 'Error');
       }
 
       if (error.error.code === 401) {
         this.disableButtonAdd = false;
-        this.message = error.error.message;
-        console.log('Usuario incorrectos')
+        this.toastr.error('Usuario o contraseña incorrecta', 'No autorizado');
       }
 
       if (error.error.code === 422) {
         this.disableButtonAdd = false;
-        this.message = 'Datos inválidos';
+        this.toastr.error(error.error.message, 'Error');
       }
     });
 
