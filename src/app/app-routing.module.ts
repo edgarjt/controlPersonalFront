@@ -6,7 +6,7 @@ import { RolesComponent } from "./panel/roles/roles.component";
 import { UsersComponent } from "./panel/users/users.component";
 import { LoginGuard } from "./_guards/login.guard";
 import { MyDateComponent } from "./panel/my-date/my-date.component";
-import { WorkComponent } from "./panel/work/work.component";
+/*import { WorkComponent } from "./panel/work/work.component";*/
 import { SettingComponent } from "./panel/setting/setting.component";
 import { LogoutGuard } from "./_guards/logout.guard";
 import {RolesGuard} from "./_guards/roles.guard";
@@ -22,7 +22,7 @@ const routes: Routes = [
         /*{ path: 'roles', component: RolesComponent },*/
         { path: 'myDate', component: MyDateComponent },
         { path: 'users', canActivate: [RolesGuard], component: UsersComponent },
-        { path: 'works', canActivate: [RolesGuard], component: WorkComponent },
+/*        { path: 'works', canActivate: [RolesGuard], component: WorkComponent },*/
         { path: 'setting', canActivate: [RolesGuard],  component: SettingComponent }
       ]
   }

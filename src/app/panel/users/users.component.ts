@@ -27,7 +27,7 @@ export class UsersComponent implements OnInit {
     this.load = true;
   }
 
-  displayedColumns: string[] = ['name', 'surname', 'email', 'rfc', 'role_id', 'work_id', 'edit', 'delete'];
+  displayedColumns: string[] = ['name', 'surname', 'curp', 'email', 'phone', 'work_id', 'edit', 'delete'];
   dataSource = new MatTableDataSource();
 
   applyFilter(event: Event) {

@@ -26,7 +26,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.toastr.success('Se registro con éxito, revise su correo para poder inciar sesión', 'Registro');
     this.registerForm = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
       first_surname: new FormControl('', [Validators.required]),
@@ -54,17 +53,20 @@ export class RegisterComponent implements OnInit {
 
   register(): any {
     this.submitted = true;
+
     if (this.registerForm.invalid) {
       return false;
     }
 
-    this.userService.addUsersGeneral(this.registerForm.value).
-    subscribe(response => {
+    this.disableButtonAdd = true;
+
+    this.userService.addUsersGeneral(this.registerForm.value).subscribe(response => {
       if (response.status) {
         this.toastr.success('Se registro con éxito, revise su correo para poder inciar sesión', 'Registro');
         this.router.navigate(['/login']);
       }
     }, error => {
+      this.disableButtonAdd = false;
       this.toastr.error('Ocurrio un error al tratar de guardar los datos', 'Error');
     });
   }

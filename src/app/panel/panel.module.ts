@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { RolesComponent } from './roles/roles.component';
 import { UsersComponent } from './users/users.component';
 import { MaterialModule } from "../material.module";
@@ -31,6 +32,7 @@ import { EditWorkComponent } from './work/edit-work/edit-work.component';
   ],
   imports: [
     CommonModule,
+    FlexLayoutModule,
     MaterialModule,
     ReactiveFormsModule
   ],
