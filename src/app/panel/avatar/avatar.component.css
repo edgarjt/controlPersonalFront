@@ -1,0 +1,12 @@
+.title {
+  text-align: center;
+}
+.file {
+  visibility: hidden;
+}
+.cont-avatar {
+  margin-top: 160px;
+}
+.action button {
+  margin-right: 7px;
+}

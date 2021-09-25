@@ -16,6 +16,8 @@ import { SettingComponent } from './setting/setting.component';
 import { WorkService } from "../_services/work.service";
 import { AddWorkComponent } from './work/add-work/add-work.component';
 import { EditWorkComponent } from './work/edit-work/edit-work.component';
+import { AvatarComponent } from './avatar/avatar.component';
+import { AvatarModule } from "ngx-avatar";
 
 
 @NgModule({
@@ -28,13 +30,15 @@ import { EditWorkComponent } from './work/edit-work/edit-work.component';
     WorkComponent,
     SettingComponent,
     AddWorkComponent,
-    EditWorkComponent
+    EditWorkComponent,
+    AvatarComponent
   ],
   imports: [
     CommonModule,
     FlexLayoutModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AvatarModule
   ],
   providers: [
     AuthService,

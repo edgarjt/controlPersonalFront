@@ -1,0 +1,21 @@
+<h2 class="title">Actualizar foto de perfil</h2>
+<div fxLayout="row" fxLayoutAlign="center center">
+<ngx-avatar class="avatar"
+            [src]="imgAvatar"
+            name="Edgar Salomon"
+            size="220"></ngx-avatar>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" class="cont-avatar">
+  <div class="action">
+    <button class="save-btn" mat-stroked-button color="" (click)="img.click()">Elegir imagen</button>
+    <button mat-raised-button color="primary" (click)="resetAvatar()">Reiniciar</button>
+    <button mat-raised-button color="primary" (click)="saveAvatar()">Guardar</button>
+    <button mat-raised-button color="primary" (click)="deleteAvatar()">Eliminar</button>
+  </div>
+  <div>
+    <button class="close-btn" mat-flat-button color="warn" mat-dialog-close>Cerrar</button>
+  </div>
+</div>
+
+<input type="file" hidden #img (change)="changeAvatar($event)" accept="image/*">

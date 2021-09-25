@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { PanelModule } from "./panel/panel.module";
 import { InterceptorService } from "./_interceptors/interceptor.service";
 import { RegisterComponent } from './register/register.component';
+import { AvatarModule } from "ngx-avatar";
 
 @NgModule({
   declarations: [
@@ -22,22 +23,23 @@ import { RegisterComponent } from './register/register.component';
     PanelComponent,
     RegisterComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FlexLayoutModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    SharedModule,
-    PanelModule,
-    ToastrModule.forRoot({
-      timeOut: 4000,
-      positionClass: 'toast-top-right',
-      preventDuplicates: true,
-    })
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FlexLayoutModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        SharedModule,
+        PanelModule,
+        ToastrModule.forRoot({
+            timeOut: 4000,
+            positionClass: 'toast-top-right',
+            preventDuplicates: true,
+        }),
+        AvatarModule
+    ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })

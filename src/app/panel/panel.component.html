@@ -5,7 +5,11 @@
   <span><strong>tabasco.</strong>gob.mx</span>
   <span class="nav-spacer"></span>
 
-  <button mat-button [matMenuTriggerFor]="menu">{{dataUser.getUsers().name}}</button>
+  <ngx-avatar class="avatar" (click)="avatar(dataUser?.getUsers().id)"
+              [src]="image"
+              name="{{dataUser.getUsers().name}}"
+              size="45" ></ngx-avatar>
+  <button mat-button [matMenuTriggerFor]="menu" style="padding-left: 5px; padding-right: 15px">{{dataUser.getUsers().name}}</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item>{{dataUser.getUsers().role.name}}</button>
   </mat-menu>
@@ -16,8 +20,9 @@
   </button>
 </mat-toolbar>
 
-<mat-drawer-container class="vh-100" >
-  <mat-drawer #drawer class="pt-60 sidenav" mode="side" opened>
+<mat-drawer-container style="height: 100vh; padding-top: 64px">
+  <mat-drawer #drawer class="sidenav" mode="side" opened style="padding-top: 64px">
+    <mat-divider></mat-divider>
     <div class="menu">
       <ul>
 <!--        <li [routerLink]="['roles']" [routerLinkActive]="['active']">
@@ -47,8 +52,8 @@
     </div>
   </mat-drawer>
 
-  <mat-drawer-content class="pt-60 vh-100">
-    <div class="cont-area container">
+  <mat-drawer-content>
+    <div class="container" style="margin-bottom: 10px; margin-top: 12px">
       <mat-card>
       <router-outlet></router-outlet>
       </mat-card>

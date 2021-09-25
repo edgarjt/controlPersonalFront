@@ -50,3 +50,6 @@
   background: #dbdada;
   border-left:  #9d2449 solid 3px;
 }
+.avatar:hover {
+  cursor: pointer;
+}

@@ -2,53 +2,118 @@
 
 <mat-divider></mat-divider>
 
-<h2>Información personal</h2>
-<table class="mb-4">
-  <tbody>
-  <tr>
-    <td class="td-head">Nombre</td>
-    <td class="td-body font-weight">{{dataUser?.name}}</td>
-  </tr>
+<div fxLayout="row" fxLayoutAlign="none" >
+  <div>
+    <h2>Información personal</h2>
+    <table class="mb-4">
+      <tbody>
+      <tr>
+        <td class="td-head">Nombre</td>
+        <td class="td-body font-weight">{{dataUser?.name}}</td>
+      </tr>
 
-  <tr>
-    <td class="td-head">Apellido paterno</td>
-    <td class="td-body font-weight">{{dataUser?.first_surname}}</td>
-  </tr>
+      <tr>
+        <td class="td-head">Apellido paterno</td>
+        <td class="td-body font-weight">{{dataUser?.first_surname}}</td>
+      </tr>
 
-  <tr>
-    <td class="td-head">Apellido materno</td>
-    <td class="td-body font-weight">{{dataUser?.last_surname}}</td>
-  </tr>
+      <tr>
+        <td class="td-head">Apellido materno</td>
+        <td class="td-body font-weight">{{dataUser?.last_surname}}</td>
+      </tr>
 
-  <tr>
-    <td class="td-head">Correo electrónico</td>
-    <td class="td-body font-weight">{{dataUser?.email}}</td>
-  </tr>
+      <tr>
+        <td class="td-head">Fecha de nacimiento</td>
+        <td class="td-body font-weight">{{dataUser?.nacimiento}}</td>
+      </tr>
 
-  <tr>
-    <td class="td-head">Permiso</td>
-    <td class="td-body font-weight">{{dataUser?.role?.name}}</td>
-  </tr>
-  </tbody>
-</table>
+      <tr>
+        <td class="td-head">CURP</td>
+        <td class="td-body font-weight">{{dataUser?.curp}}</td>
+      </tr>
 
-<mat-divider></mat-divider>
-<h2>Información laboral</h2>
-<table>
-  <tbody>
-  <tr>
-    <td class="td-head">Area</td>
-    <td class="td-body font-weight">{{dataUser.work_position?.area}}</td>
-  </tr>
+      <tr>
+        <td class="td-head">RFC</td>
+        <td class="td-body font-weight">{{dataUser?.rfc}}</td>
+      </tr>
 
-  <tr>
-    <td class="td-head">Puesto</td>
-    <td class="td-body font-weight">{{dataUser.work_position?.name}}</td>
-  </tr>
+      <tr>
+        <td class="td-head">Estado</td>
+        <td class="td-body font-weight">{{dataUser?.state}}</td>
+      </tr>
 
-  <tr>
-    <td class="td-head">Descripción del puesto</td>
-    <td class="td-body font-weight">{{dataUser.work_position?.description}}</td>
-  </tr>
-  </tbody>
-</table>
+      <tr>
+        <td class="td-head">Dirección</td>
+        <td class="td-body font-weight">{{dataUser?.street}}</td>
+      </tr>
+
+      <tr>
+        <td class="td-head">Entre calles</td>
+        <td class="td-body font-weight">{{dataUser?.betweenStreet}}</td>
+      </tr>
+
+      <tr>
+        <td class="td-head">Ciudad</td>
+        <td class="td-body font-weight">{{dataUser?.city}}</td>
+      </tr>
+
+      <tr>
+        <td class="td-head">Código postal</td>
+        <td class="td-body font-weight">{{dataUser?.cp}}</td>
+      </tr>
+
+      <tr>
+        <td class="td-head">Genero</td>
+        <td class="td-body font-weight" *ngIf="dataUser?.genero === 'H' else elseMujer">Hombre</td>
+
+        <ng-template #elseMujer>
+          <td class="td-body font-weight">Mujer</td>
+        </ng-template>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h2>Información laboral</h2>
+    <table>
+      <tbody>
+      <tr>
+        <td class="td-head">Fecha de inicio</td>
+        <td class="td-body font-weight">{{dataUser?.date}}</td>
+      </tr>
+
+      <tr>
+        <td class="td-head">Dependencia</td>
+        <td class="td-body font-weight">{{dataUser?.dep}}</td>
+      </tr>
+
+      <tr>
+        <td class="td-head">Departamento</td>
+        <td class="td-body font-weight">{{dataUser?.depa}}</td>
+      </tr>
+
+      <tr>
+        <td class="td-head">Cargo</td>
+        <td class="td-body font-weight">{{dataUser?.cargo}}</td>
+      </tr>
+
+      <tr>
+        <td class="td-head">Correo electronico</td>
+        <td class="td-body font-weight">{{dataUser?.email}}</td>
+      </tr>
+
+      <tr>
+        <td class="td-head">Teléfono</td>
+        <td class="td-body font-weight">{{dataUser?.phone}}</td>
+      </tr>
+
+      <tr>
+        <td class="td-head">Jefe directo</td>
+        <td class="td-body font-weight">{{dataUser?.boss}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<button mat-raised-button color="primary">Editar</button>

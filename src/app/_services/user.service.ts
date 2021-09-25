@@ -59,4 +59,16 @@ export class UsersService {
     return data.role.code === 'user';
   }
 
+  getUsersProfile(id: number, type: string): Observable<any> {
+    return this.http.get(this.url + 'users/getProfile/'+id+'/'+type, { headers: httpOptions.headers, responseType: 'blob' });
+  }
+
+  addProfile(params: any): Observable<any> {
+    return this.http.post(this.url + 'users/profile', params);
+  }
+
+  deleteUserProfile(id: number): Observable<any> {
+    return this.http.delete(this.url + 'deleteProfile/' + id, httpOptions);
+  }
+
 }
