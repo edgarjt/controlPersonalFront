@@ -35,7 +35,7 @@ export class MyDateComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(updateUser => {
       if (isObject(updateUser)) {
-        if (updateUser.status && updateUser.type ==! 'password') {
+        if (updateUser.status && updateUser.type != 'password') {
           this.dataUser = updateUser.data;
           this.userService.storeUserData(updateUser.data);
         }
