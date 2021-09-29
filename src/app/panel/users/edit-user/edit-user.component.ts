@@ -17,6 +17,7 @@ export class EditUserComponent implements OnInit {
   disableButtonAdd: boolean;
   load: boolean;
   states: any;
+  updatePasswordForm: any = FormBuilder;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public dataUser: any,
@@ -56,9 +57,16 @@ export class EditUserComponent implements OnInit {
       role_id: new FormControl(this.dataUser.role_id.toString(), [Validators.required]),
       boss: new FormControl(this.dataUser.boss)
     });
+
+    this.updatePasswordForm = this.formBuilder.group({
+      type: true,
+      id: this.dataUser.id,
+      passwordNew: new FormControl('', [Validators.required])
+    });
   }
 
-  get form() { return this.updateUserForm.controls }
+  get form() { return this.updateUserForm.controls };
+  get formPassword() { return this.updatePasswordForm.controls };
 
   updateUser(): any {
     this.submitted = true;
@@ -76,6 +84,28 @@ export class EditUserComponent implements OnInit {
     }, error => {
       this.disableButtonAdd = false;
       this.toastr.error('Usuario no actualizado','Error');
+    })
+  }
+
+  updatePassword(): any {
+    this.submitted = true;
+    if (this.updatePasswordForm.invalid) {
+      return true;
+    }
+    this.disableButtonAdd = true;
+
+    this.usersService.ressetPassword(this.updatePasswordForm.value).subscribe(response => {
+      if (response.status) {
+        this.toastr.success('Contraseña actualizada','Éxito');
+        this.dialogRef.close({type: 'password', status: true});
+        this.disableButtonAdd = false;
+      }
+    }, error => {
+      if (error.status == 406) {
+        this.toastr.error('Contraseña actual es incorrecta','Error');
+      }
+
+      this.disableButtonAdd = false;
     })
   }
 

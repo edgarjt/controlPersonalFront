@@ -2,5 +2,5 @@
 
 <mat-divider></mat-divider>
 
-<mat-slide-toggle color="primary" class="mt-4">Activar formulario de registro</mat-slide-toggle>
+<mat-slide-toggle color="primary" class="mt-4" (change)="active($event.checked)" [checked]="check">Activar formulario de registro</mat-slide-toggle>
 

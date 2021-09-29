@@ -28,7 +28,7 @@ export class PanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getUsersProfile(12, 'profile').subscribe(r => {
+    this.userService.getUsersProfile(this.dataUser?.getUsers().id, 'profile').subscribe(r => {
       this.preview(r);
     }, error => {
       console.log(error);

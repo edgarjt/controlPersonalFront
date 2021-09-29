@@ -19,6 +19,7 @@ import { EditWorkComponent } from './work/edit-work/edit-work.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { AvatarModule } from "ngx-avatar";
 import { EditDateComponent } from './my-date/edit-date/edit-date.component';
+import { SettingService } from "../_services/setting.service";
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { EditDateComponent } from './my-date/edit-date/edit-date.component';
     AuthService,
     UsersService,
     RoleService,
-    WorkService
+    WorkService,
+    SettingService
   ]
 })
 export class PanelModule {

@@ -3,6 +3,7 @@ import {UsersService} from "../../_services/user.service";
 import { environment} from "../../../environments/environment";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ToastrService} from "ngx-toastr";
+import {AuthService} from "../../_services/auth.service";
 
 @Component({
   selector: 'app-avatar',
@@ -18,7 +19,8 @@ export class AvatarComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public dataWork: any,
     public dialogRef: MatDialogRef<AvatarComponent>,
     public usersService: UsersService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public dataUser: AuthService
   ) {}
 
   ngOnInit(): void {

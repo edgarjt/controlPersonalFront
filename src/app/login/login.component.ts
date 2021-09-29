@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { AuthService } from "../_services/auth.service";
 import { ToastrService } from "ngx-toastr";
 import { Title } from "@angular/platform-browser";
+import { SettingService } from "../_services/setting.service";
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,15 @@ export class LoginComponent implements OnInit {
   loginForm:any;
   submitted = false;
   disableButtonAdd: boolean;
+  isActive: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
     private toastr: ToastrService,
-    private title: Title
+    private title: Title,
+    public settingService: SettingService,
   ) {
     this.disableButtonAdd = false;
     this.loginForm = FormGroup;
@@ -29,6 +32,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.settingService.getSetting('register').subscribe(x => {
+      if (x.value == 1) {
+        this.isActive = true;
+      }
+    });
+
     this.loginForm = this.formBuilder.group({
       userEmail: new FormControl('', [Validators.required, Validators.email]),
       userPassword: new FormControl('', [Validators.required]),

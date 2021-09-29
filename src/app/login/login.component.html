@@ -1,6 +1,7 @@
 <mat-toolbar color="primary" class="fixed-top">
+  <span><strong>tabasco.</strong>gob.mx</span>
   <span class="example-spacer"></span>
-  <a [routerLink]="['/register']" class="register">Registrate</a>
+  <a [routerLink]="['/register']" class="register" *ngIf="isActive">Registrate</a>
 </mat-toolbar>
 
 <div class="d-flex w-100 vh-100">
