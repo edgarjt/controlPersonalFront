@@ -1,0 +1,176 @@
+<h2 mat-dialog-title>Actualizar mis datos</h2>
+
+<form class="example-form" (ngSubmit)="updateUser()" [formGroup]="updateUserForm">
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Nombre</mat-label>
+    <input matInput type="text" formControlName="name"
+           [ngClass]="{'is-invalid': submitted && form.name.errors}">
+
+    <mat-error *ngIf="submitted && form.name.errors" class="">
+      <span *ngIf="updateUserForm.controls.name.errors?.required">Nombre inválido</span>
+    </mat-error>
+
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>Primer apellido</mat-label>
+      <input matInput type="text" formControlName="first_surname"
+             [ngClass]="{'is-invalid': submitted && form.first_surname.errors}">
+
+      <mat-error *ngIf="submitted && form.first_surname.errors" class="">
+        <span *ngIf="updateUserForm.controls.first_surname.errors?.required">Primer apellido inválido</span>
+      </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>Segundo apellido</mat-label>
+      <input matInput type="text" formControlName="last_surname"
+             [ngClass]="{'is-invalid': submitted && form.last_surname.errors}">
+
+      <mat-error *ngIf="submitted && form.last_surname.errors" class="">
+        <span *ngIf="updateUserForm.controls.last_surname.errors?.required">Segundo apellido inválido</span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Fecha de nacimiento</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="nacimiento"
+           [ngClass]="{'is-invalid': submitted && form.nacimiento.errors}">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+
+    <mat-error *ngIf="submitted && form.nacimiento.errors" class="">
+      <span *ngIf="updateUserForm.controls.nacimiento.errors?.required">Nacimiento inválido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>CURP</mat-label>
+      <input matInput type="text" formControlName="curp"
+             [ngClass]="{'is-invalid': submitted && form.curp.errors}">
+
+      <mat-error *ngIf="submitted && form.curp.errors" class="">
+            <span *ngIf="updateUserForm.controls.curp.errors?.required ||
+             updateUserForm.controls.curp.errors?.minLength ||
+             updateUserForm.controls.curp.errors?.maxLength">CURP inválido</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>RFC</mat-label>
+      <input matInput type="text" formControlName="rfc"
+             [ngClass]="{'is-invalid': submitted && form.rfc.errors}">
+
+      <mat-error *ngIf="submitted && form.rfc.errors" class="">
+        <span *ngIf="updateUserForm.controls.rfc.errors?.required || updateUserForm.controls.rfc.errors?.maxLength">RFC inválido</span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Estado</mat-label>
+    <mat-select formControlName="state" [ngClass]="{ 'is-invalid': submitted && form.state.errors }">
+      <mat-option *ngFor="let state of states" [value]="state.nombre">
+        {{state.nombre}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="submitted && form.state.errors">
+      <div *ngIf="updateUserForm.controls.state.errors.required">Estado invalido</div>
+    </mat-error>
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>Ciudad</mat-label>
+      <input matInput type="text" formControlName="city"
+             [ngClass]="{'is-invalid': submitted && form.city.errors}">
+
+      <mat-error *ngIf="submitted && form.city.errors" class="">
+        <span *ngIf="updateUserForm.controls.city.errors?.required">Ciudad inválido</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-45 mb-4">
+      <mat-label>Codigo postal</mat-label>
+      <input matInput type="number" formControlName="cp"
+             [ngClass]="{'is-invalid': submitted && form.cp.errors}">
+
+      <mat-error *ngIf="submitted && form.cp.errors" class="">
+        <span *ngIf="updateUserForm.controls.cp.errors?.required || updateUserForm.controls.cp.errors?.maxLength">Código postal inválido</span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>Dirección</mat-label>
+      <input matInput type="text" formControlName="street"
+             [ngClass]="{'is-invalid': submitted && form.street.errors}">
+
+      <mat-error *ngIf="submitted && form.street.errors" class="">
+        <span *ngIf="updateUserForm.controls.street.errors?.required">Direccón inválido</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-45 mb-3">
+      <mat-label>Entre calles</mat-label>
+      <input matInput type="text" formControlName="betweenStreet"
+             [ngClass]="{'is-invalid': submitted && form.betweenStreet.errors}">
+
+      <mat-error *ngIf="submitted && form.betweenStreet.errors" class="">
+        <span *ngIf="updateUserForm.controls.betweenStreet.errors?.required">Calles inválido</span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-radio-group aria-label="Select an option" color="primary" class="mb-4" formControlName="genero"
+                   [ngClass]="{'is-invalid': submitted && form.genero.errors}">
+    <label id="example-radio-group-label">Genero: </label>
+    <mat-radio-button value="H">H</mat-radio-button>
+    <mat-radio-button value="M">M</mat-radio-button>
+
+    <mat-error *ngIf="submitted && form.genero.errors" class="">
+      <span *ngIf="updateUserForm.controls.genero.errors?.required">Genero inválido</span>
+    </mat-error>
+  </mat-radio-group>
+
+  <div class="mt-4">
+    <button mat-raised-button color="primary" [disabled]="disableButtonAdd">Actualizar mis datos</button>
+  </div>
+</form>
+
+<mat-divider style="margin-top: 20px"></mat-divider>
+<h2 mat-dialog-title style="margin-top: 20px">Cambiar contaseña</h2>
+
+<form class="example-form" (ngSubmit)="updatePassword()" [formGroup]="updatePasswordForm">
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Contraseña actual</mat-label>
+    <input matInput type="password" formControlName="passwordOld"
+           [ngClass]="{'is-invalid': submitted && formPassword.passwordOld.errors}">
+
+    <mat-error *ngIf="submitted && formPassword.passwordOld.errors" class="">
+      <span *ngIf="updatePasswordForm.controls.passwordOld.errors?.required">Contraseña inválido</span>
+    </mat-error>
+
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3">
+    <mat-label>Contraseña nueva</mat-label>
+    <input matInput type="password" formControlName="passwordNew"
+           [ngClass]="{'is-invalid': submitted && formPassword.passwordNew.errors}">
+
+    <mat-error *ngIf="submitted && formPassword.passwordNew.errors" class="">
+      <span *ngIf="updatePasswordForm.controls.passwordNew.errors?.required">Contraseña inválido</span>
+    </mat-error>
+
+  </mat-form-field>
+
+  <div class="mt-4">
+    <button mat-raised-button color="primary" [disabled]="disableButtonAdd">Cambiar contraseña</button>
+    <button class="save-btn" mat-flat-button color="warn" mat-dialog-close>Cerrar</button>
+  </div>
+</form>

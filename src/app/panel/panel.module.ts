@@ -18,6 +18,7 @@ import { AddWorkComponent } from './work/add-work/add-work.component';
 import { EditWorkComponent } from './work/edit-work/edit-work.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { AvatarModule } from "ngx-avatar";
+import { EditDateComponent } from './my-date/edit-date/edit-date.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AvatarModule } from "ngx-avatar";
     SettingComponent,
     AddWorkComponent,
     EditWorkComponent,
-    AvatarComponent
+    AvatarComponent,
+    EditDateComponent
   ],
   imports: [
     CommonModule,

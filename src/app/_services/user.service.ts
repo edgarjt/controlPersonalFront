@@ -71,4 +71,8 @@ export class UsersService {
     return this.http.delete(this.url + 'deleteProfile/' + id, httpOptions);
   }
 
+  ressetPassword(params: any): Observable<any> {
+    return this.http.post(this.url + 'users/resetPassword', params, httpOptions);
+  }
+
 }

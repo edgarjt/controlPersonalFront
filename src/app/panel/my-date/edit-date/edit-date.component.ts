@@ -1,38 +1,32 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import { UsersService } from "../../../_services/user.service";
 import { ToastrService } from "ngx-toastr";
-import {WorkService} from "../../../_services/work.service";
 import { STATES_CONSTANT } from "../../../_constants/statesConstant";
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.css']
+  selector: 'app-edit-date',
+  templateUrl: './edit-date.component.html',
+  styleUrls: ['./edit-date.component.css']
 })
-export class EditUserComponent implements OnInit {
-  updateUserForm: any;
+export class EditDateComponent implements OnInit {
+  updateUserForm: any = FormBuilder;
+  updatePasswordForm: any = FormBuilder;
   submitted: boolean = false;
-  disableButtonAdd: boolean;
-  load: boolean;
-  states: any;
+  disableButtonAdd: boolean = false;
+  states: any = STATES_CONSTANT;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public dataUser: any,
     private formBuilder: FormBuilder,
     public usersService: UsersService,
     private toastr: ToastrService,
-    public dialogRef: MatDialogRef<EditUserComponent>,
-    public cargoService: WorkService
-  ) {
-    this.updateUserForm = FormGroup;
-    this.disableButtonAdd = false;
-    this.load = false;
-    this.states = STATES_CONSTANT;
-  }
+    public dialogRef: MatDialogRef<EditDateComponent>,
+  ) { }
 
   ngOnInit(): void {
+
     this.updateUserForm = this.formBuilder.group({
       id: this.dataUser.id,
       name: new FormControl(this.dataUser.name, [Validators.required]),
@@ -48,19 +42,20 @@ export class EditUserComponent implements OnInit {
       cp: new FormControl(this.dataUser.cp, [Validators.required, Validators.maxLength(5)]),
       genero: new FormControl(this.dataUser.genero, [Validators.required]),
       date: new FormControl(this.dataUser.date, [Validators.required]),
-      dep: new FormControl(this.dataUser.dep, [Validators.required]),
-      depa: new FormControl(this.dataUser.depa, [Validators.required]),
-      cargo: new FormControl(this.dataUser.cargo, [Validators.required]),
-      email: new FormControl(this.dataUser.email, [Validators.required, Validators.email]),
-      phone: new FormControl(this.dataUser.phone, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
-      role_id: new FormControl(this.dataUser.role_id.toString(), [Validators.required]),
-      boss: new FormControl(this.dataUser.boss)
+      type: true
+    });
+
+    this.updatePasswordForm = this.formBuilder.group({
+      id: this.dataUser.id,
+      passwordOld: new FormControl('', [Validators.required]),
+      passwordNew: new FormControl('', [Validators.required])
     });
   }
 
-  get form() { return this.updateUserForm.controls }
+  get form() { return this.updateUserForm.controls };
+  get formPassword() { return this.updatePasswordForm.controls };
 
-  updateUser(): any {
+  updateUser(): any{
     this.submitted = true;
     if (this.updateUserForm.invalid) {
       return true;
@@ -76,6 +71,28 @@ export class EditUserComponent implements OnInit {
     }, error => {
       this.disableButtonAdd = false;
       this.toastr.error('Usuario no actualizado','Error');
+    })
+  }
+
+  updatePassword(): any {
+    this.submitted = true;
+    if (this.updatePasswordForm.invalid) {
+      return true;
+    }
+    this.disableButtonAdd = true;
+
+    this.usersService.ressetPassword(this.updatePasswordForm.value).subscribe(response => {
+      if (response.status) {
+        this.toastr.success('Contraseña actualizada','Éxito');
+        this.dialogRef.close({type: 'password', status: true});
+        this.disableButtonAdd = false;
+      }
+    }, error => {
+      if (error.status == 406) {
+        this.toastr.error('Contraseña actual es incorrecta','Error');
+      }
+
+      this.disableButtonAdd = false;
     })
   }
 
