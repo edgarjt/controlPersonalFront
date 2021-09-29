@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from "../_services/auth.service";
-import {ToastrService} from "ngx-toastr";
+import { ToastrService } from "ngx-toastr";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-login',
@@ -19,10 +20,12 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private title: Title
   ) {
     this.disableButtonAdd = false;
     this.loginForm = FormGroup;
+    title.setTitle('Control Personal | Login');
   }
 
   ngOnInit(): void {

@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { UsersService } from "../_services/user.service";
 import { STATES_CONSTANT } from "../_constants/statesConstant";
 import { ToastrService } from "ngx-toastr";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-register',
@@ -20,9 +21,11 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UsersService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private title: Title
   ) {
     this.states = STATES_CONSTANT;
+    title.setTitle('Control Personal | Register');
   }
 
   ngOnInit(): void {

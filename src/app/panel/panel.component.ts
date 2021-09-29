@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { UsersService } from "../_services/user.service";
 import { AvatarComponent } from "./avatar/avatar.component";
 import {isObject} from "rxjs/internal-compatibility";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-panel',
@@ -20,8 +21,11 @@ export class PanelComponent implements OnInit {
     public dataUser: AuthService,
     public dialog: MatDialog,
     private router: Router,
-    public userService: UsersService
-  ) { }
+    public userService: UsersService,
+    private title: Title
+  ) {
+    title.setTitle('Control Personal | Panel');
+  }
 
   ngOnInit(): void {
     this.userService.getUsersProfile(12, 'profile').subscribe(r => {
